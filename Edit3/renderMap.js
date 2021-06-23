@@ -63,9 +63,9 @@ function Map(props) {
         ()=>{
             let view;
 
-        loadModules(["esri/views/MapView", "esri/WebMap", "esri/layers/GeoJSONLayer","esri/layers/MapImageLayer","esri/layers/FeatureLayer","esri/widgets/Search","esri/widgets/LayerList","esri/widgets/CoordinateConversion"],{
+        loadModules(["esri/views/MapView", "esri/WebMap", "esri/layers/GeoJSONLayer","esri/layers/MapImageLayer","esri/layers/FeatureLayer","esri/widgets/Search","esri/widgets/LayerList","esri/widgets/CoordinateConversion","esri/widgets/Locate"],{
             css:true
-        }).then(([MapView,WebMap,GeoJSONLayer,MapImageLayer,FeatureLayer,Search,LayerList,CoordinateConversion])=>{
+        }).then(([MapView,WebMap,GeoJSONLayer,MapImageLayer,FeatureLayer,Search,LayerList,CoordinateConversion,Locate])=>{
             const webmap = new WebMap({
                 basemap: 'satellite'
             })
@@ -251,6 +251,15 @@ function Map(props) {
               });
       
             view.ui.add(ccWidget, "bottom-left");
+
+            var locateBtn = new Locate({
+                view: view
+              });
+      
+              
+            view.ui.add(locateBtn, {
+                position: "top-left"
+              });
             
 
             
